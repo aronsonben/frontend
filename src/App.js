@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from "./Header";
+import Body from "./Body";
 
 // Ben Aronson - change for github?
 class App extends React.Component {
@@ -7,6 +8,7 @@ class App extends React.Component {
         return (
             <div>
                 <Header />
+                <Body />
             </div>
         );
     }

@@ -1,0 +1,15 @@
+.component-body {
+    padding: 15px;
+    position: relative;
+    font-weight: normal;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: left;
+}
+
+.h1 {
+    font-size: 28px;
+}
+
+.p {
+    font-size: 14px;
+}
