@@ -11,6 +11,7 @@
     "path": "^0.12.7",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
+    "react-flip-move": "^3.0.2",
     "webpack": "^4.15.1",
     "webpack-dev-server": "^3.1.4"
   },
