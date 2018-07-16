@@ -14,8 +14,9 @@ class TodoItems extends Component {
 
     createTasks(item) {
         // Event Handler for click
-        return <li onClick={() => this.delete(item.key)}
-                    key={item.key}>{item.text}</li>
+        return (
+            <li onClick={() => this.delete(item.key)} key={item.key}>{item.text}</li>
+        );
     }
 
     render() {
