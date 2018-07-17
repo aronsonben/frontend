@@ -39,3 +39,7 @@
 ul.theList {
     padding: 0;
 }
+.todoListMain .infoBox {
+    color: red;
+    align-self: flex-end;
+}
