@@ -47,6 +47,8 @@ class TodoList extends Component {
     }
 
     clearAll() {
+        this.inputElement.value = "";
+
         this.setState({
             items: []
         });
@@ -63,7 +65,7 @@ class TodoList extends Component {
                                 placeholder="enter task">
                         </input>
                         <button type="submit">add</button>
-                        <button type="submit" onClick={this.clearAll}>clear</button>
+                        <button onClick={this.clearAll}>clear</button>
                     </form>
                 </div>
                 <TodoItems entries={this.state.items}
