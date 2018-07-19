@@ -31,16 +31,16 @@ class TodoItems extends Component {
     delete(key) {
         this.props.delete(key);
     }
-
+//hey
     createTasks(item) {
         // Event Handler for click
         return (
             //<li onClick={() => this.delete(item.key)} key={item.key}>{item.text}</li>
-            <li onClick={() => this.toggleDiv(item)} key={item.key}>{item.text}</li>
-            //<li key={item.key}>
-            //    <h4>{item.text}</h4>
-            //    <button>hi</button>
-            //</li>
+            //<li onClick={() => this.toggleDiv(item)} key={item.key}>{item.text}</li>
+            <li key={item.key}>
+                {item.text}
+                <button onClick={() => this.delete(item.key)} className="del-button">delete</button>
+            </li>
         );
     }
 

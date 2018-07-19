@@ -36,6 +36,15 @@
     background-color: pink;
     cursor: pointer;
 }
+.del-button {
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    text-align: center;
+    display: inline-flex;
+    cursor: pointer;
+    float: right;
+}
 ul.theList {
     padding: 0;
 }
