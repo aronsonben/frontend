@@ -36,11 +36,11 @@ class TodoItems extends Component {
         // Event Handler for click
         return (
             //<li onClick={() => this.delete(item.key)} key={item.key}>{item.text}</li>
-            //<li onClick={() => this.toggleDiv(item)} key={item.key}>{item.text}</li>
-            <li key={item.key}>
-                {item.text}
-                <button onClick={() => this.delete(item.key)} className="del-button">delete</button>
-            </li>
+            <li onClick={() => this.toggleDiv(item)} key={item.key}>{item.text}</li>
+            //<li key={item.key}>
+            //    {item.text}
+            //    <button onClick={() => this.delete(item.key)} className="del-button">delete</button>
+            //</li>
         );
     }
 
@@ -56,11 +56,14 @@ class TodoItems extends Component {
 
         return (
             <div>
-                <ul className="theList">
-                    <FlipMove duration={250} easing="ease-out">
-                        {listItems}
-                    </FlipMove>
-                </ul>
+                <div className="listDiv">
+                    <ul className="theList">
+                        <FlipMove duration={250} easing="ease-out">
+                            {listItems}
+                        </FlipMove>
+                    </ul>
+
+                </div>
                 <div className="infoBox">
                     { this.state.showInfo && <TodoBox /> }
                 </div>

@@ -1,13 +1,16 @@
 import React from 'react';
 import Header from "./Header";
 import Body from "./Body";
+import TodoList from "./TodoList";
 
 class App extends React.Component {
     render() {
         return (
             <div>
                 <Header />
-                <Body />
+                <h1>To-do List</h1>
+                <p>Thanks to <a href="https://www.kirupa.com/react/simple_todo_app_react.htm">kirupa.com's react tutorial.</a></p>
+                <TodoList />
             </div>
         );
     }
