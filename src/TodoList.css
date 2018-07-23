@@ -60,3 +60,7 @@ ul.theList {
     border-radius: 5px;
     transition: background-color .2s ease-out;
 }
+
+.itemInfo {
+    padding: 15px;
+}

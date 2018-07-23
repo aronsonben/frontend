@@ -7,7 +7,8 @@ class TodoList extends Component {
         super(props);
 
         this.state = {
-            items: []
+            items: [],
+            showInfo: false
         };
 
         this.addItem = this.addItem.bind(this);
@@ -54,6 +55,12 @@ class TodoList extends Component {
         });
 
         console.log(this.state.items);
+    }
+
+    toggleDiv(key) {
+        this.setState({
+            showInfo : !this.state.showInfo
+        });
     }
 
     render() {

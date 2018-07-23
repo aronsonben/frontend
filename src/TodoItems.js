@@ -11,6 +11,7 @@ class TodoBox extends Component {
         return(
             <div className="itemInfo">
                 This is a div
+                <button onClick={() => this.props.delete(item.key)}>delete</button>
             </div>
         );
     }
@@ -31,7 +32,7 @@ class TodoItems extends Component {
     delete(key) {
         this.props.delete(key);
     }
-//hey
+
     createTasks(item) {
         // Event Handler for click
         return (
@@ -65,7 +66,8 @@ class TodoItems extends Component {
 
                 </div>
                 <div className="infoBox">
-                    { this.state.showInfo && <TodoBox /> }
+                    { this.state.showInfo && <TodoBox item={listItems}
+                                                      delete={() => this.delete(item.key)}/> }
                 </div>
             </div>
         );
