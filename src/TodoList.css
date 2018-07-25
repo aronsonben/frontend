@@ -64,3 +64,10 @@ ul.theList {
 .itemInfo {
     padding: 15px;
 }
+
+.delbtn {
+    float: right;
+    background-color: #ff000069;
+    border-radius: 20px;
+    width: 25%;
+}

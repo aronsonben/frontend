@@ -10,8 +10,8 @@ class TodoBox extends Component {
     render() {
         return(
             <div className="itemInfo">
-                This is a div
-                <button onClick={() => this.props.delete(item.key)}>delete</button>
+                <button className="delbtn" onClick={() => this.props.delete(item.key)}>delete</button>
+                <span>This is a div</span>
             </div>
         );
     }
@@ -27,6 +27,7 @@ class TodoItems extends Component {
 
         this.createTasks = this.createTasks.bind(this);
         this.toggleDiv = this.toggleDiv.bind(this);
+        this.delete = this.delete.bind(this);
     }
 
     delete(key) {
