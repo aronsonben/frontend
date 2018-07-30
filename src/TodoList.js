@@ -57,7 +57,7 @@ class TodoList extends Component {
         console.log(this.state.items);
     }
 
-    toggleDiv(key) {
+    toggleDiv() {
         this.setState({
             showInfo : !this.state.showInfo
         });
@@ -76,7 +76,9 @@ class TodoList extends Component {
                     </form>
                 </div>
                 <TodoItems entries={this.state.items}
-                            delete={this.deleteItem}/>
+                            delete={() => this.deleteItem}
+                            toggleDiv={() => this.toggleDiv}
+                            toggleInfo={this.state.showInfo}/>
             </div>
         );
     }

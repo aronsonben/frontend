@@ -22,7 +22,7 @@ class TodoItems extends Component {
         super(props);
 
         this.state = {
-            showInfo: false
+            showInfo: this.props.toggleInfo
         };
 
         this.createTasks = this.createTasks.bind(this);
@@ -38,19 +38,19 @@ class TodoItems extends Component {
         // Event Handler for click
         return (
             //<li onClick={() => this.delete(item.key)} key={item.key}>{item.text}</li>
-            <li onClick={() => this.toggleDiv(item)} key={item.key}>{item.text}</li>
-            //<li key={item.key}>
-            //    {item.text}
-            //    <button onClick={() => this.delete(item.key)} className="del-button">delete</button>
-            //</li>
+            <li onClick={() => this.toggleDiv()} key={item.key}>{item.text}</li>
         );
     }
 
-    toggleDiv(item) {
-        this.setState({
-            showInfo : !this.state.showInfo
-        });
+
+    toggleDiv() {
+        console.log("toggleDiv entered");
+        //this.props.toggleDiv();
+        //this.setState({
+        //    showInfo : !this.state.showInfo
+        //});
     }
+
 
     render() {
         var todoEntries = this.props.entries;
@@ -67,8 +67,8 @@ class TodoItems extends Component {
 
                 </div>
                 <div className="infoBox">
-                    { this.state.showInfo && <TodoBox item={listItems}
-                                                      delete={() => this.delete(item.key)}/> }
+                    { this.state.showInfo &&
+                        <TodoBox item={listItems} delete={() => this.delete}/> }
                 </div>
             </div>
         );
