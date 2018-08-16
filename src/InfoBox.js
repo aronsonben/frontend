@@ -11,8 +11,8 @@ class TodoBox extends Component {
             );
         } else {
             return (
-                <div className="itemInfo">
-                    <span>Hide InfoBox</span>
+                <div class="itemInfoHidden" style={{display: 'none'}}>
+                    <span>hidden InfoBox</span>
                 </div>
             );
         }

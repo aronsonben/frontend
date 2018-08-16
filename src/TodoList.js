@@ -14,7 +14,8 @@ class TodoList extends Component {
 
         this.addItem = this.addItem.bind(this);
         this.deleteItem = this.deleteItem.bind(this);
-        this.clearAll = this.clearAll.bind(this);
+        this.toggleDiv = this.toggleDiv.bind(this);
+        //this.clearAll = this.clearAll.bind(this);
     }
 
     addItem(e) {
@@ -59,9 +60,7 @@ class TodoList extends Component {
     }
 
     toggleDiv() {
-        this.setState({
-            showInfo : !this.state.showInfo
-        });
+        this.setState({showInfo : !this.state.showInfo });
     }
 
     render() {
@@ -77,13 +76,12 @@ class TodoList extends Component {
                     </form>
                 </div>
                 <div id="infoSection">
-                    <div class="infoCol" id="listItems">
+                    <div className="infoCol" id="listItems">
                         <TodoItems entries={this.state.items}
                                    delete={this.deleteItem}
-                                   toggleDiv={this.toggleDiv}
-                                   toggleInfo={this.state.showInfo}/>
+                                   toggleDiv={this.toggleDiv}/>
                     </div>
-                    <div class="infoCol" id="itemInfoBox">
+                    <div className="infoCol" id="itemInfoBox">
                         <InfoBox showBox={this.state.showInfo}/>
                     </div>
                 </div>

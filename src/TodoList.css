@@ -76,7 +76,14 @@ ul.theList {
     display: flex;
 }
 
+.infoSection:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
 .infoCol {
     float: left;
     width: 50%;
 }
+
