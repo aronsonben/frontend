@@ -1,21 +1,6 @@
 import React, { Component } from "react";
 import FlipMove from "react-flip-move";
-
-class TodoBox extends Component {
-    constructor(props) {
-        super(props)
-
-    }
-
-    render() {
-        return(
-            <div className="itemInfo">
-                <button className="delbtn" onClick={() => this.props.delete(item.key)}>delete</button>
-                <span>This is a div</span>
-            </div>
-        );
-    }
-}
+import InfoBox from "./InfoBox";
 
 class TodoItems extends Component {
     constructor(props) {
@@ -27,6 +12,7 @@ class TodoItems extends Component {
 
         this.createTasks = this.createTasks.bind(this);
         this.toggleDiv = this.toggleDiv.bind(this);
+        this.handleClick = this.handleClick.bind(this);
         this.delete = this.delete.bind(this);
     }
 
@@ -38,7 +24,7 @@ class TodoItems extends Component {
         // Event Handler for click
         return (
             //<li onClick={() => this.delete(item.key)} key={item.key}>{item.text}</li>
-            <li onClick={() => this.toggleDiv()} key={item.key}>{item.text}</li>
+            <li onClick={this.handleClick(item.key)} key={item.key}>{item.text}</li>
         );
     }
 
@@ -49,6 +35,11 @@ class TodoItems extends Component {
         //this.setState({
         //    showInfo : !this.state.showInfo
         //});
+    }
+
+    handleClick(key) {
+        console.log("handle listItem click for: "+key);
+
     }
 
 
@@ -67,11 +58,11 @@ class TodoItems extends Component {
 
                 </div>
                 <div className="infoBox">
-                    { this.state.showInfo &&
-                        <TodoBox item={listItems} delete={() => this.delete}/> }
+                    { this.state.showInfo }
                 </div>
             </div>
         );
+        //<TodoBox item={listItems} delete={this.delete}/> --- This went with "{ this.state.showInfo }"
     }
 };
 

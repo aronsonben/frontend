@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import TodoItems from "./TodoItems";
+import InfoBox from "./InfoBox";
 import "./TodoList.css";
 
 class TodoList extends Component {
@@ -75,10 +76,18 @@ class TodoList extends Component {
                         <button onClick={this.clearAll}>clear</button>
                     </form>
                 </div>
-                <TodoItems entries={this.state.items}
-                            delete={() => this.deleteItem}
-                            toggleDiv={() => this.toggleDiv}
-                            toggleInfo={this.state.showInfo}/>
+                <div id="infoSection">
+                    <div class="infoCol" id="listItems">
+                        <TodoItems entries={this.state.items}
+                                   delete={this.deleteItem}
+                                   toggleDiv={this.toggleDiv}
+                                   toggleInfo={this.state.showInfo}/>
+                    </div>
+                    <div class="infoCol" id="itemInfoBox">
+                        <InfoBox showBox={this.state.showInfo}/>
+                    </div>
+                </div>
+
             </div>
         );
     }

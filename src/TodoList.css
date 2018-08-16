@@ -71,3 +71,12 @@ ul.theList {
     border-radius: 20px;
     width: 25%;
 }
+
+.infoSection {
+    display: flex;
+}
+
+.infoCol {
+    float: left;
+    width: 50%;
+}
