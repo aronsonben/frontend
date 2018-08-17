@@ -9,7 +9,8 @@ class TodoList extends Component {
 
         this.state = {
             items: [],
-            showInfo: false
+            showInfo: false,
+            selectedItem: null
         };
 
         this.addItem = this.addItem.bind(this);
@@ -45,7 +46,9 @@ class TodoList extends Component {
         });
 
         this.setState({
-            items: filteredItems
+            items: filteredItems,
+            showInfo: false,
+            selectedItem: null
         });
     }
 
@@ -59,8 +62,22 @@ class TodoList extends Component {
         console.log(this.state.items);
     }
 
-    toggleDiv() {
-        this.setState({showInfo : !this.state.showInfo });
+    toggleDiv(item) {
+        if(this.state.selectedItem !== null) {
+            if(this.state.selectedItem.key === item.key) {
+                this.setState({
+                    showInfo : !this.state.showInfo,
+                    selectedItem: null
+                });
+            } else {
+                this.setState({selectedItem: item});
+            }
+        } else {
+            this.setState({
+                showInfo : !this.state.showInfo,
+                selectedItem: item
+            });
+        }
     }
 
     render() {
@@ -79,10 +96,13 @@ class TodoList extends Component {
                     <div className="infoCol" id="listItems">
                         <TodoItems entries={this.state.items}
                                    delete={this.deleteItem}
-                                   toggleDiv={this.toggleDiv}/>
+                                   toggleDiv={this.toggleDiv}
+                                   selectedItem={this.state.selectedItem}/>
                     </div>
                     <div className="infoCol" id="itemInfoBox">
-                        <InfoBox showBox={this.state.showInfo}/>
+                        <InfoBox showBox={this.state.showInfo}
+                                 delete={this.deleteItem}
+                                 selectedItem={this.state.selectedItem}/>
                     </div>
                 </div>
 

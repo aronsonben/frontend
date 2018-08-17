@@ -52,8 +52,9 @@
 ul.theList {
     padding: 0;
 }
-.infoBox {
-    width: 50%;
+.infobox {
+    width: 100%;
+    padding: 10px 20px;
     display: inline-block;
     background-color: rgba(255,255,255,.5);
     color: #333;
@@ -61,15 +62,25 @@ ul.theList {
     transition: background-color .2s ease-out;
 }
 
+.infobox-hdr {
+    text-align: center;
+}
+
 .itemInfo {
     padding: 15px;
 }
 
 .delbtn {
-    float: right;
-    background-color: #ff000069;
-    border-radius: 20px;
-    width: 25%;
+    font-size: 12px;
+    padding: 8px 24px 8px 50px;
+    margin-left: 0;
+    margin-right: 0;
+    border-right: 1px solid rgba(0,0,0,0.2);
+    width: 100%;
+    background: #f34d93;
+    color: white;
+    border-radius: 6px;
+    border-bottom: 3px solid rgba(0,0,0,.3);
 }
 
 .infoSection {
@@ -86,4 +97,6 @@ ul.theList {
     float: left;
     width: 50%;
 }
+
+
 

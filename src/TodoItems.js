@@ -6,12 +6,9 @@ class TodoItems extends Component {
     constructor(props) {
         super(props);
 
-        /*this.state = {
-            showInfo: this.props.toggleInfo
-        };*/
+        var selectedItem = this.props.selectedItem;
 
         this.createTasks = this.createTasks.bind(this);
-        //this.toggleDiv = this.toggleDiv.bind(this);
         this.handleClick = this.handleClick.bind(this);
         this.delete = this.delete.bind(this);
     }
@@ -21,16 +18,14 @@ class TodoItems extends Component {
     }
 
     createTasks(item) {
-        // Event Handler for click
         return (
             //<li onClick={() => this.delete(item.key)} key={item.key}>{item.text}</li>
-            <li onClick={() => this.handleClick(item.key)} key={item.key}>{item.text}</li>
+            <li onClick={() => this.handleClick(item)} key={item.key}>{item.text}</li>
         );
     }
 
-    handleClick(key) {
-        console.log("handle listItem click for: "+key);
-        this.props.toggleDiv();
+    handleClick(item) {
+        this.props.toggleDiv(item);
     }
 
     render() {
@@ -48,11 +43,6 @@ class TodoItems extends Component {
                 </div>
             </div>
         );
-
-        //<div className="infoBox">
-        //    { this.props.showInfo }
-        //</div>
-        //<TodoBox item={listItems} delete={this.delete}/> --- This went with "{ this.state.showInfo }"
     }
 };
 
