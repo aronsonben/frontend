@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import FlipMove from "react-flip-move";
 import InfoBox from "./InfoBox";
 
@@ -20,7 +21,14 @@ class TodoItems extends Component {
     createTasks(item) {
         return (
             //<li onClick={() => this.delete(item.key)} key={item.key}>{item.text}</li>
-            <li onClick={() => this.handleClick(item)} key={item.key}>{item.text}</li>
+            <div>
+                <li id="listItem" onClick={() => this.handleClick(item)} key={item.key}>
+                    {item.text}
+                </li>
+                <button id="itemDel" onClick={() => this.delete(item.key)}>
+                    <FontAwesomeIcon icon="times" />
+                </button>
+            </div>
         );
     }
 
