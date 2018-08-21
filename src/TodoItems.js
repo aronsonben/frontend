@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import FlipMove from "react-flip-move";
 import InfoBox from "./InfoBox";
+import ListItem from "./ListItem";
 
 class TodoItems extends Component {
     constructor(props) {
@@ -22,9 +23,7 @@ class TodoItems extends Component {
         return (
             //<li onClick={() => this.delete(item.key)} key={item.key}>{item.text}</li>
             <div>
-                <li id="listItem" onClick={() => this.handleClick(item)} key={item.key}>
-                    {item.text}
-                </li>
+                <ListItem item={item} onClick={() => this.handleClick(item)} />
                 <button id="itemDel" onClick={() => this.delete(item.key)}>
                     <FontAwesomeIcon icon="times" />
                 </button>

@@ -45,11 +45,18 @@ class TodoList extends Component {
             return (item.key !== key);
         });
 
-        this.setState({
-            items: filteredItems,
-            showInfo: false,
-            selectedItem: null
-        });
+        if(this.state.selectedItem !== null && this.state.selectedItem.key !== key) {
+            this.setState({
+                items: filteredItems
+            });
+        } else {
+            this.setState({
+                items: filteredItems,
+                showInfo: false,
+                selectedItem: null
+            });
+        }
+
     }
 
     clearAll() {

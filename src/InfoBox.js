@@ -14,7 +14,7 @@ class TodoBox extends Component {
                     </div>
                     <p>Name: {item.text}</p>
                     <p>Key: {item.key}</p>
-                    <p>Date Created: </p> <br />
+                    <p>Date Created: {item.dateCreated}</p> <br />
                     <button className="delbtn" onClick={() => this.props.delete(item.key)}>delete</button>
                 </div>
             );
