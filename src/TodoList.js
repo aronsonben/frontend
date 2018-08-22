@@ -16,14 +16,15 @@ class TodoList extends Component {
         this.addItem = this.addItem.bind(this);
         this.deleteItem = this.deleteItem.bind(this);
         this.toggleDiv = this.toggleDiv.bind(this);
-        //this.clearAll = this.clearAll.bind(this);
+        this.clearAll = this.clearAll.bind(this);
     }
 
     addItem(e) {
         if(this.inputElement.value !== "") {
             var newItem = {
                 text: this.inputElement.value,
-                key: Date.now()
+                key: Date.now(),
+                dateCreated: new Date().toLocaleTimeString()
             };
 
             this.setState((prevState) => {
@@ -34,8 +35,6 @@ class TodoList extends Component {
 
             this.inputElement.value = "";
         }
-
-        console.log(this.state.items);
 
         e.preventDefault();
     }
@@ -60,13 +59,11 @@ class TodoList extends Component {
     }
 
     clearAll() {
-        this.inputElement.value = "";
-
         this.setState({
-            items: []
+            items: [],
+            showInfo: false,
+            selectedItem: null
         });
-
-        console.log(this.state.items);
     }
 
     toggleDiv(item) {
