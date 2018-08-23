@@ -19,6 +19,7 @@ class TodoItems extends Component {
     }
 
     createTasks(item) {
+        localStorage.setItem(item.key, item.text);
         return (
             //<li onClick={() => this.delete(item.key)} key={item.key}>{item.text}</li>
             <div>
@@ -30,6 +31,18 @@ class TodoItems extends Component {
         );
     }
 
+    // get all localStorage items and print them first
+    printStorage() {
+        return (
+            <div>
+                <li id="listItem" onClick={() => this.handleClick(item)} key={item.key} dateCreated="0">{item.text}</li>
+                <button id="itemDel" onClick={() => this.delete(item.key)}>
+                    <FontAwesomeIcon icon="times" />
+                </button>
+            </div>
+        )
+    }
+
     handleClick(item) {
         this.props.toggleDiv(item);
     }
@@ -37,7 +50,7 @@ class TodoItems extends Component {
     render() {
         var todoEntries = this.props.entries;
         var listItems = todoEntries.map(this.createTasks);
-
+        var items2 = todoEntries.map(this.printStorage);
         return (
             <div>
                 <div className="listDiv">

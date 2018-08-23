@@ -36,6 +36,8 @@ class TodoList extends Component {
             this.inputElement.value = "";
         }
 
+        localStorage.setItem(newItem.key, newItem.text);
+
         e.preventDefault();
     }
 
@@ -85,6 +87,8 @@ class TodoList extends Component {
     }
 
     render() {
+        //localStorage.setItem("myItems", this.state.items);
+
         return (
             <div className="todoListMain">
                 <div className="header">
