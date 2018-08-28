@@ -19,7 +19,7 @@ class TodoItems extends Component {
     }
 
     createTasks(item) {
-        localStorage.setItem(item.key, item.text);
+        //localStorage.setItem(item.key, item.text);
         return (
             //<li onClick={() => this.delete(item.key)} key={item.key}>{item.text}</li>
             <div>
@@ -52,7 +52,7 @@ class TodoItems extends Component {
         var todoEntries = this.props.entries;
         var listItems = todoEntries.map(this.createTasks);
         var items2 = this.getStorage();
-        console.log(items2);
+        //console.log(items2);
         return (
             <div>
                 <div className="listDiv">

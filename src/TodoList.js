@@ -3,6 +3,29 @@ import TodoItems from "./TodoItems";
 import InfoBox from "./InfoBox";
 import "./TodoList.css";
 
+class ListItem {
+    constructor(text, key, dateCreated) {
+        this.text = text;
+        this.key = key;
+        this.dateCreated = dateCreated;
+    }
+
+    // Will need to either use JSON.stringify into localStorage or use this function
+    toString() {
+        return this.text;
+    }
+}
+
+Storage.prototype.setObject = (key,value) => {
+    this.setItem(key, JSON.stringify(value));
+}
+
+Storage.prototype.getObject = (key) => {
+    var value = this.getItem(key);
+    return value && JSON.parse(value);
+}
+
+
 class TodoList extends Component {
     constructor(props) {
         super(props);
@@ -27,6 +50,11 @@ class TodoList extends Component {
                 dateCreated: new Date().toLocaleTimeString()
             };
 
+            var newItem2 = new ListItem(this.inputElement.value,
+                                        Date.now(), new Date().toLocaleTimeString());
+
+            console.log(newItem2);
+
             this.setState((prevState) => {
                 return {
                     items: prevState.items.concat(newItem)
@@ -36,7 +64,7 @@ class TodoList extends Component {
             this.inputElement.value = "";
         }
 
-        localStorage.setItem(newItem.key, newItem.text);
+        localStorage.setItem(newItem2.key, newItem2);
 
         e.preventDefault();
     }
@@ -58,6 +86,7 @@ class TodoList extends Component {
             });
         }
 
+        localStorage.removeItem(key);
     }
 
     clearAll() {
