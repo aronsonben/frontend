@@ -5,26 +5,16 @@ import "./TodoList.css";
 
 class ListItem {
     constructor(text, key, dateCreated) {
-        this.text = text;
         this.key = key;
+        this.text = text;
         this.dateCreated = dateCreated;
     }
 
     // Will need to either use JSON.stringify into localStorage or use this function
-    toString() {
-        return this.text;
-    }
+    // toString() {
+    //     return this.text;
+    // }
 }
-
-Storage.prototype.setObject = (key,value) => {
-    this.setItem(key, JSON.stringify(value));
-}
-
-Storage.prototype.getObject = (key) => {
-    var value = this.getItem(key);
-    return value && JSON.parse(value);
-}
-
 
 class TodoList extends Component {
     constructor(props) {
@@ -45,8 +35,8 @@ class TodoList extends Component {
     addItem(e) {
         if(this.inputElement.value !== "") {
             var newItem = {
-                text: this.inputElement.value,
                 key: Date.now(),
+                text: this.inputElement.value,
                 dateCreated: new Date().toLocaleTimeString()
             };
 
@@ -64,7 +54,7 @@ class TodoList extends Component {
             this.inputElement.value = "";
         }
 
-        localStorage.setItem(newItem2.key, newItem2);
+        localStorage.setItem(newItem2.key, JSON.stringify(newItem2));
 
         e.preventDefault();
     }
