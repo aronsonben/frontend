@@ -16,9 +16,12 @@ class TodoItems extends Component {
 
     componentDidMount() {
         // load localStorage items upon render
-        var storedKeys = this.getLocalStorage();
+        var storedValues = this.getLocalStorage();
         // TODO: need to send this to another function to parse into JSON; then another to print it out
-        //console.log(storedKeys);
+        console.log(storedValues);
+        //var storedItems = this.getItemsFromStorage(storedValues);
+        //var storedItems2 = storedValues.map(this.getItemsFromStorage);
+        //console.log(storedItems2);
     }
 
     getLocalStorage() {
@@ -30,6 +33,10 @@ class TodoItems extends Component {
             values.push(localStorage.getItem(keys[i]));
         }
         return values;
+    }
+
+    getItemsFromStorage(item) {
+        return JSON.parse(item);
     }
 
     delete(key) {
