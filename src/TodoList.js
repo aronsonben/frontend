@@ -22,6 +22,7 @@ class TodoList extends Component {
 
         this.state = {
             items: [],
+            storedItems: [],
             showInfo: false,
             selectedItem: null
         };
@@ -30,6 +31,35 @@ class TodoList extends Component {
         this.deleteItem = this.deleteItem.bind(this);
         this.toggleDiv = this.toggleDiv.bind(this);
         this.clearAll = this.clearAll.bind(this);
+    }
+
+    componentDidMount() {
+        // load localStorage items upon render
+        var storedValues = this.getLocalStorage();
+        var storedItems2 = storedValues.map(this.getItemsFromStorage);
+        console.log(storedItems2);
+
+        storedItems2.reverse().pop();
+        storedItems2.map((item) => this.state.storedItems.push(item));
+        console.log(this.state.storedItems);
+    }
+
+    getLocalStorage() {
+        var values = [],
+            keys = Object.keys(localStorage),
+            i = keys.length;
+
+        while( i-- ) {
+            values.push(localStorage.getItem(keys[i]));
+        }
+        return values;
+    }
+
+    getItemsFromStorage(item) {
+        if(item.toString() === "INFO") {
+            return JSON.parse('{"key": 0, "text": "test"}');
+        }
+        return JSON.parse(item);
     }
 
     addItem(e) {
@@ -43,7 +73,7 @@ class TodoList extends Component {
             var newItem2 = new ListItem(this.inputElement.value,
                                         Date.now(), new Date().toLocaleTimeString());
 
-            console.log(newItem2);
+            //console.log(newItem2);
 
             this.setState((prevState) => {
                 return {
@@ -79,9 +109,11 @@ class TodoList extends Component {
         localStorage.removeItem(key);
     }
 
+    // clearing storedItems creates async prob with localStorage (?)
     clearAll() {
         this.setState({
             items: [],
+            storedItems: [],
             showInfo: false,
             selectedItem: null
         });
@@ -122,6 +154,7 @@ class TodoList extends Component {
                 <div id="infoSection">
                     <div className="infoCol" id="listItems">
                         <TodoItems entries={this.state.items}
+                                   storedEntries={this.state.storedItems}
                                    delete={this.deleteItem}
                                    toggleDiv={this.toggleDiv}
                                    selectedItem={this.state.selectedItem}/>

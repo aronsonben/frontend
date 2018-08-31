@@ -14,46 +14,33 @@ class TodoItems extends Component {
         this.delete = this.delete.bind(this);
     }
 
-    componentDidMount() {
-        // load localStorage items upon render
-        var storedValues = this.getLocalStorage();
-        // TODO: need to send this to another function to parse into JSON; then another to print it out
-        console.log(storedValues);
-        //var storedItems = this.getItemsFromStorage(storedValues);
-        //var storedItems2 = storedValues.map(this.getItemsFromStorage);
-        //console.log(storedItems2);
-    }
-
-    getLocalStorage() {
-        var values = [],
-            keys = Object.keys(localStorage),
-            i = keys.length;
-
-        while( i-- ) {
-            values.push(localStorage.getItem(keys[i]));
-        }
-        return values;
-    }
-
-    getItemsFromStorage(item) {
-        return JSON.parse(item);
-    }
-
     delete(key) {
         this.props.delete(key);
     }
 
     createTasks(item) {
-        //localStorage.setItem(item.key, item.text);
-        return (
-            //<li onClick={() => this.delete(item.key)} key={item.key}>{item.text}</li>
-            <div>
-                <li id="listItem" onClick={() => this.handleClick(item)} key={item.key} dateCreated="0">{item.text}</li>
-                <button id="itemDel" onClick={() => this.delete(item.key)}>
-                    <FontAwesomeIcon icon="times" />
-                </button>
-            </div>
-        );
+        let { entries, storedEntries } = this.props;
+        // if storedItem, make it a different color
+        if(storedEntries.includes(item) && !entries.includes(item)) {
+            return (
+                <div>
+                    <li id="storedListItem" onClick={() => this.handleClick(item)} key={item.key} dateCreated="0">{item.text}</li>
+                    <button id="itemDel" onClick={() => this.delete(item.key)}>
+                        <FontAwesomeIcon icon="times" />
+                    </button>
+                </div>
+            );
+        } else {
+            return (
+                //<li onClick={() => this.delete(item.key)} key={item.key}>{item.text}</li>
+                <div>
+                    <li id="listItem" onClick={() => this.handleClick(item)} key={item.key} dateCreated="0">{item.text}</li>
+                    <button id="itemDel" onClick={() => this.delete(item.key)}>
+                        <FontAwesomeIcon icon="times" />
+                    </button>
+                </div>
+            );
+        }
     }
 
     // get all localStorage items and print them first
@@ -74,7 +61,9 @@ class TodoItems extends Component {
     }
 
     render() {
-        var todoEntries = this.props.entries;
+        var todoEntries = this.props.entries,
+            storedTodoEntries = this.props.storedEntries;
+        var storedListItems = storedTodoEntries.map(this.createTasks);
         var listItems = todoEntries.map(this.createTasks);
         var items2 = this.getStorage();
         //console.log(items2);
@@ -82,6 +71,9 @@ class TodoItems extends Component {
             <div>
                 <div className="listDiv">
                     <ul className="theList">
+                        <FlipMove duration={250} easing="ease-out">
+                            {storedListItems}
+                        </FlipMove>
                         <FlipMove duration={250} easing="ease-out">
                             {listItems}
                         </FlipMove>
