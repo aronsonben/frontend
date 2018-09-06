@@ -110,13 +110,21 @@ class TodoList extends Component {
     }
 
     // clearing storedItems creates async prob with localStorage (?)
-    clearAll() {
+    clearAll(evt) {
+        evt.stopPropagation();
         this.setState({
             items: [],
             storedItems: [],
             showInfo: false,
             selectedItem: null
         });
+    }
+
+    clearLocal() {
+        localStorage.clear();
+        this.setState({storedItems: []});
+        console.log("Local storage cleared: ");
+        console.log(localStorage);
     }
 
     toggleDiv(item) {
@@ -142,13 +150,17 @@ class TodoList extends Component {
 
         return (
             <div className="todoListMain">
+                <div>
+                    <button onClick={this.clearLocal.bind(this)}>cl.locSto</button>
+                    <button onClick={() => {console.log(localStorage)}}>pr.locSto</button>
+                </div>
                 <div className="header">
                     <form onSubmit={this.addItem}>
                         <input ref={(a) => this.inputElement = a}
                                 placeholder="enter task">
                         </input>
                         <button type="submit">add</button>
-                        <button onClick={this.clearAll}>clear</button>
+                        <button type="reset" onClick={(evt) => this.clearAll(evt)}>clear</button>
                     </form>
                 </div>
                 <div id="infoSection">
