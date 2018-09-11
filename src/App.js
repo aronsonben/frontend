@@ -17,7 +17,7 @@ class App extends React.Component {
         return (
             <div>
                 <Header />
-                <p>Thanks to <a href="https://www.kirupa.com/react/simple_todo_app_react.htm">kirupa.com's react tutorial.</a></p>
+                <p>Thanks to <a href="https://www.kirupa.com/react/simple_todo_app_react.htm">kirupa.com\'s react tutorial.</a></p>
                 <TodoList />
             </div>
         );
