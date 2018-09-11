@@ -14,5 +14,5 @@ class Header extends React.Component {
         );
     }
 }
-<FontAwesomeIcon icon="times" />
+
 export default Header;

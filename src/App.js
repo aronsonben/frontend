@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { faReact } from '@fortawesome/free-brands-svg-icons';
 import Header from "./Header";
-import Body from "./Body";
 import TodoList from "./TodoList";
 
 library.add(fab);

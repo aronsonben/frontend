@@ -1,13 +1,10 @@
 import React, { Component } from "react";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import FlipMove from "react-flip-move";
-import InfoBox from "./InfoBox";
 
 class TodoItems extends Component {
     constructor(props) {
         super(props);
-
-        var selectedItem = this.props.selectedItem;
 
         this.createTasks = this.createTasks.bind(this);
         this.handleClick = this.handleClick.bind(this);
