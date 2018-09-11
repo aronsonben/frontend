@@ -67,11 +67,11 @@ class TodoList extends Component {
             var newItem = {
                 key: Date.now(),
                 text: this.inputElement.value,
-                dateCreated: new Date().toLocaleTimeString()
+                dateCreated: new Date().toLocaleString()
             };
 
             var newItem2 = new ListItem(this.inputElement.value,
-                                        Date.now(), new Date().toLocaleTimeString());
+                                        Date.now(), new Date().toLocaleString());
 
             //console.log(newItem2);
 
@@ -151,8 +151,9 @@ class TodoList extends Component {
         return (
             <div className="todoListMain">
                 <div>
-                    <button onClick={this.clearLocal.bind(this)}>cl.locSto</button>
-                    <button onClick={() => {console.log(localStorage)}}>pr.locSto</button>
+                    <p style={{display: 'inline', fontSize: '13px'}}>Developer/Admin tools for Local Storage:</p>
+                    <button onClick={() => {console.log(localStorage)}}>print</button>
+                    <button onClick={this.clearLocal.bind(this)}>clear</button>
                 </div>
                 <div className="header">
                     <form onSubmit={this.addItem}>
